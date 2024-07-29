@@ -67,7 +67,7 @@ body {
 }
 
 .copy-btn:hover .tooltiptext {
-    display: block;
+  display: block;
 }
 
 .copy-btn {
@@ -76,7 +76,6 @@ body {
   background-color: transparent;
   position: relative;
 }
-
 
 .tooltiptext {
   position: absolute;
@@ -87,6 +86,12 @@ body {
   transform: translateX(-50%);
 }
 
-.copy-done{
-    display: none;
+.copy-done {
+  display: none;
+}
+.qr-code__title {
+  font-size: 14px;
+  color: #fe5363;
+  display: inline-block;
+  background-color: #fff;
 }

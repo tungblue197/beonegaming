@@ -134,3 +134,24 @@
   max-height: 60dvh;
   overflow-y: auto;
 }
+.qr-code {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.qr-code img {
+  width: 220px;
+}
+.qr-code {
+  display: flex;
+  flex-direction: column;
+}
+.qr-code__title {
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  padding: 12px 6px;
+  color: #2d2d2d;
+}
