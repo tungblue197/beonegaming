@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./assets/icon/icons8-valorant-50.png"
+    />
+    <title>beOne - Community (Friends and Family)</title>
+    <link rel="stylesheet" href="./style/common.css" />
+    <link rel="stylesheet" href="./style/home.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <div class="page-container page-container__home">
+      <div class="page-container__content">
+        <div class="tab">
+          <div class="tab__header">
+            <div class="tab-1 tab-title selected" data-tab="1">Đăng ký</div>
+            <div class="tab-2 tab-title" data-tab="2">
+              Danh sách đăng ký tuần này
+            </div>
+          </div>
+          <div class="tab__content-1 tab-content selected">
+            <form class="register-form">
+              <h4 class="main-title">
+                Đăng ký tham gia custom vui <span>Valorant </span>
+                vẻ cùng
+                <a
+                  class="link"
+                  target="_blank"
+                  href="https://www.youtube.com/@beonegaming97/featured"
+                  >beOne Gaming</a
+                >
+                <span class="time">vào 20h Thứ 7 hàng tuần</span>
+              </h4>
+              <label class="input-label">
+                <span>Tên của bạn</span>
+                <input
+                  class="input"
+                  name="name"
+                  placeholder="Ví dụ: Nguyễn Văn A"
+                  type="text"
+                />
+              </label>
+              <label class="input-label">
+                <span>Tên InGame</span>
+                <input
+                  class="input"
+                  name="ingame"
+                  placeholder="Ví dụ: beOne#8989"
+                  type="text"
+                />
+              </label>
+              <label class="input-label">
+                <span>Mức rank hiện tại của bạn</span>
+                <div class="rank-list"></div>
+              </label>
+              <label class="input-label discord-container">
+                <span>Join discord</span>
+                <a href="#" target="_blank">
+                  <img
+                    class="discord-img"
+                    src="./assets/icon/9255-discord.png"
+                  />
+                </a>
+              </label>
+              <span class="explain-text"
+                >Chú ý bạn phải join discord trước thời gian diễn ra custom để
+                chắc xuất tham gia nhé!</span
+              >
+              <button type="submit" class="register-form__btn">Đăng ký</button>
+            </form>
+          </div>
+          <div class="tab__content-2 tab-content">
+            <div class="item">
+              <span class="name">Nguyen Van A</span>
+              <span class="ingame"
+                >beOne#8989
+                <img class="copy" src="./assets/icon/icons8-copy-24.png"
+              /></span>
+              <img
+                class="rank"
+                src="./assets/icon/v-ranks/1518-valorant-immortal-1.png"
+              />
+            </div>
+            <div class="item">
+              <span class="name">Nguyen Van A</span>
+              <span class="ingame"
+                >beOne#8989
+                <img class="copy" src="./assets/icon/icons8-copy-24.png"
+              /></span>
+              <img
+                class="rank"
+                src="./assets/icon/v-ranks/1518-valorant-immortal-1.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>

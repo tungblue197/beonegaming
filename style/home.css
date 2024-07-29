@@ -1,0 +1,136 @@
+.page-container__home {
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(2px) sepia(50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.page-container__home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../assets/image/valorant-background.webp);
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px); /* Adjust the blur intensity */
+  z-index: -1; /* Ensure the blurred image is behind the content */
+}
+
+.page-container__content {
+  background-color: #fff;
+
+  max-width: 660px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.page-container__content form {
+  padding: 28px;
+}
+.page-container__content form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rank-list {
+  display: flex;
+  gap: 6px;
+}
+.rank-list input {
+  appearance: none;
+  width: 60px;
+  height: 70px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.rank-list input:checked {
+  outline: 2px solid #fe5363;
+}
+.rank-list img:hover {
+  background-color: #fe5363;
+}
+.discord-img {
+  width: 60px;
+}
+.explain-text {
+  font-size: 14px;
+  color: #fe5363;
+}
+
+.tab__header {
+  display: flex;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.tab__header > div {
+  flex: 1;
+  text-align: center;
+  padding: 20px 0px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #2d2d2d;
+  cursor: pointer;
+}
+.tab__header > div.selected {
+  background-color: #fe5363;
+  color: #fff;
+}
+.register-form__btn {
+  margin-top: 12px;
+  background-color: #fe5363;
+  outline: none;
+  border: none;
+  padding: 18px 0px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.selected {
+  display: flex;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.item .copy {
+  cursor: pointer;
+}
+.item .rank {
+  width: 40px;
+}
+.item .name {
+  font-weight: 600;
+  flex: 1;
+}
+.item .ingame {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  justify-content: space-between;
+}
+.tab__content-2 {
+  padding: 0px 22px;
+  flex-direction: column;
+  max-height: 60dvh;
+  overflow-y: auto;
+}
