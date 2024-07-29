@@ -42,6 +42,7 @@
 .rank-list {
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 .rank-list input {
   appearance: none;
