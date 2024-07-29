@@ -166,7 +166,7 @@ async function getData() {
   const total = data.length;
   document.querySelector(
     ".tab-2"
-  ).textContent = `Danh sách đăng ký tuần (${total})`;
+  ).textContent = `Danh sách đăng ký tuần này (${total})`;
 
   renderList(data);
 }
