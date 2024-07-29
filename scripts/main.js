@@ -137,7 +137,6 @@ async function register(e) {
     },
   ]);
 
-  console.log(error, data);
   if (!error) {
     e.target.reset();
     getData();
@@ -202,9 +201,14 @@ function renderList(data) {
       content += `
       <div class="item">
               <span class="name">${item.name || "-"}</span>
-              <span class="ingame">${
-                item.ingame || "-"
-              } <img class="copy" src="./assets/icon/icons8-copy-24.png" /></span>
+              <span class="ingame">${item.ingame || "-"} <div class="tooltip">
+                <button class="copy-btn">
+                    <img class="copy" src="./assets/icon/icons8-copy-24.png" />
+                    <img class="copy-done" width="20px" src="./assets/icon/352323_done_icon.png" />
+                </button>
+            </div>
+
+              </span>
               <img
                 class="rank"
                 src="${rankIcon}"
@@ -216,4 +220,16 @@ function renderList(data) {
   } else {
     list.innerHTML = `<h1 class="no-data">Hiện tại chưa có người đăng ký tham gia </h1>`;
   }
+}
+
+function myFunction(e) {
+  navigator.clipboard.writeText(e);
+
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
 }
