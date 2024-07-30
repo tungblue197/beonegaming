@@ -3,7 +3,7 @@ const superbase_api_key = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const superbase_api = `https://gppbbycftiwghzutjklv.supabase.co`;
 
 const sb = supabase.createClient(superbase_api, superbase_api_key);
-
+let loading = false;
 document.addEventListener("DOMContentLoaded", () => {
   renderRanks();
 
@@ -99,6 +99,8 @@ function loadRank(ranks) {
 
 async function register(e) {
   e.preventDefault();
+  if (loading) return;
+  loading = true;
   const name = document.querySelector("input[name='name']").value;
   const ingame = document.querySelector("input[name='ingame']").value;
   const rank = document.querySelector("input[name='rank']:checked")?.value;
@@ -114,41 +116,53 @@ async function register(e) {
     return;
   }
 
-  const { data: member } = await sb
-    .from("ResiterdMembers")
-    .select()
-    .eq("ingame", ingame);
+  try {
+    const { data: member } = await sb
+      .from("ResiterdMembers")
+      .select()
+      .eq("ingame", ingame);
 
-  if (member?.length > 0) {
+    if (member?.length > 0) {
+      Toastify({
+        text: `${ingame} đã đăng ký. Vui lý đăng ký tên ingame khác.`,
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        },
+      }).showToast();
+      return;
+    }
+    const { data, error } = await sb.from("ResiterdMembers").insert([
+      {
+        name,
+        ingame,
+        rank,
+      },
+    ]);
+
+    if (!error) {
+      e.target.reset();
+      getData();
+      loading = false;
+      Toastify({
+        text: "Đăng ký thành công hẹn bạn vào 20h thứ 7 hàng tuần nhé.",
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+      }).showToast();
+
+      return;
+    }
+  } catch {
+    loading = false;
     Toastify({
-      text: `${ingame} đã đăng ký. Vui lý đăng ký tên ingame khác.`,
+      text: "Đăng ký thất bại vui lòng thử lại.",
       className: "info",
       style: {
         background: "linear-gradient(to right, #ff5f6d, #ffc371)",
       },
     }).showToast();
-    return;
-  }
-  const { data, error } = await sb.from("ResiterdMembers").insert([
-    {
-      name,
-      ingame,
-      rank,
-    },
-  ]);
-
-  if (!error) {
-    e.target.reset();
-    getData();
-    Toastify({
-      text: "Đăng ký thành công hẹn bạn vào 20h thứ 7 hàng tuần nhé.",
-      className: "info",
-      style: {
-        background: "linear-gradient(to right, #00b09b, #96c93d)",
-      },
-    }).showToast();
-
-    return;
   }
 }
 
@@ -190,9 +204,24 @@ function generateUUID() {
     }, "");
 }
 
+function onCopy(e) {
+  const copyUrl = `../../assets/icon/icons8-copy-24.png`;
+  const copiedUrl = `../../assets/icon/352323_done_icon.png`;
+  const value = e.target.attributes["data-ingame"]?.value;
+
+  if (value) {
+    //copy to clipboard
+    navigator.clipboard.writeText(value);
+    //show tooltip
+    e.target.setAttribute("src", copiedUrl);
+    setTimeout(() => {
+      e.target.setAttribute("src", copyUrl);
+    }, 1000);
+  }
+}
+
 function renderList(data) {
   const list = document.querySelector(".tab__content-2");
-
   let content = "";
 
   if (data && data?.length) {
@@ -202,9 +231,11 @@ function renderList(data) {
       <div class="item">
               <span class="name">${item.name || "-"}</span>
               <span class="ingame">${item.ingame || "-"} <div class="tooltip">
-                <button class="copy-btn">
-                    <img class="copy" src="./assets/icon/icons8-copy-24.png" />
-                    <img class="copy-done" width="20px" src="./assets/icon/352323_done_icon.png" />
+                <button class="copy-btn" onclick="onCopy(event)">
+                    <img class="copy" width="20px" data-ingame="${
+                      item.ingame
+                    }" src="./assets/icon/icons8-copy-24.png" />
+                   
                 </button>
             </div>
 
