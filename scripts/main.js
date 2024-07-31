@@ -113,6 +113,7 @@ async function register(e) {
         background: "linear-gradient(to right, #ff5f6d, #ffc371)",
       },
     }).showToast();
+    loading = false;
     return;
   }
 
