@@ -104,7 +104,6 @@
 }
 .tab-content.selected {
   display: flex;
-  overflow: auto;
 }
 
 .item {
