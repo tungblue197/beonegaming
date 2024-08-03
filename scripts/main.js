@@ -118,10 +118,14 @@ async function register(e) {
   }
 
   try {
+    const start = dayjs().startOf("week");
+    const end = dayjs().endOf("week");
     const { data: member } = await sb
       .from("ResiterdMembers")
       .select()
-      .eq("ingame", ingame);
+      .eq("ingame", ingame)
+      .lte("created_at", end.toISOString())
+      .gte("created_at", start.toISOString());
 
     if (member?.length > 0) {
       Toastify({
@@ -155,8 +159,9 @@ async function register(e) {
 
       return;
     }
-  } catch {
+  } catch(error) {
     loading = false;
+    console.log(error)
     Toastify({
       text: "Đăng ký thất bại vui lòng thử lại.",
       className: "info",
