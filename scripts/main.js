@@ -45,6 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const RANKS = [
   {
+    name: "Unranked",
+    image: "../../assets/icon/v-ranks/9416-valorant-unranked.png",
+  },
+  {
     name: "Iron",
     image: "../../assets/icon/v-ranks/1854-valorant-iron-3.png",
   },
